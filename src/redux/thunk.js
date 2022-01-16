@@ -1,19 +1,23 @@
 import { newApi } from '../api/index.js'
 
-const SET_COINS = 'SET_COINS'
+const SET_ANIMALS = 'SET_ANIMALS'
 
 /* ------------------------------- */
 
-const setCoins = (data) => {
+const setAnimals = (data) => {
   return {
-    type: SET_COINS,
+    type: SET_ANIMALS,
     data
   }
 }
 
 /* ------------------------------- */
 
-export const getTopCoinsThunk = () => async (dispatch) => {
-  let coins = await newApi.getTopCoins()
-  coins && dispatch(setCoins(coins))
+export const getAnimalsThunk = () => async (dispatch) => {
+  try {
+    const animals = await newApi.getAnimals()
+    dispatch(setAnimals(animals))
+  } catch (error) {
+    console.log(error.toJSON())
+  }
 }

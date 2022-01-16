@@ -1,11 +1,11 @@
-const SET_COINS = 'SET_COINS'
+const SET_ANIMALS = 'SET_ANIMALS'
 
-const init = { coins: [] }
+const init = { animals: [] }
 
 const mainReducer = (state = init, action) => {
   switch (action.type) {
-    case SET_COINS:
-      return { ...state, coins: action.data.data }
+    case SET_ANIMALS:
+      return { ...state, animals: action.data }
 
     default:
       return { ...state }

@@ -1,17 +1,17 @@
 import * as axios from 'axios'
 
 const instance = axios.create({
-  baseURL: 'https://api.coincap.io/v2',
+  baseURL: 'https://zoo-animal-api.herokuapp.com/',
   withCredentials: false // default
 })
 
 export const newApi = {
-  async getTopCoins() {
+  async getAnimals() {
     try {
-      const response = await instance.get(`/assets`)
+      const response = await instance.get(`/animals/rand/10`)
       return response.data
     } catch (err) {
-      console.error(err.toJSON())
+      return err
     }
   }
 }
