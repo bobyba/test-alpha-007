@@ -14,10 +14,10 @@ const setAnimals = (data) => {
 /* ------------------------------- */
 
 export const getAnimalsThunk = () => async (dispatch) => {
-  try {
-    const animals = await newApi.getAnimals()
-    dispatch(setAnimals(animals))
-  } catch (error) {
-    console.log(error.toJSON())
-  }
+  newApi
+    .getAnimals()
+    .then((animals) => {
+      dispatch(setAnimals(animals))
+    })
+    .catch((e) => console.log(e))
 }
